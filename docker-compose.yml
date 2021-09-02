@@ -1,0 +1,9 @@
+services:
+    master-db:
+        image: mysql:5.6
+        volumes:
+            - ./master/data:/var/lib/mysql
+            - ./master/conf.d:/etc/mysql/conf.d
+            - ./master/initdb.d:/docker-entrypoint-initdb.d
+        env_file:
+            - ./master/master.env

@@ -1,0 +1,14 @@
+CREATE TABLE users (
+    user_id VARCHAR(16) NOT NULL PRIMARY KEY,
+    name VARCHAR(32) NOT NULL
+);
+
+CREATE TABLE posts (
+    post_id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(32) NOT NULL,
+    body TEXT NOT NULL,
+    user_id VARCHAR(16) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users (user_id)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
+);
