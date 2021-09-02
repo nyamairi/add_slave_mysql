@@ -7,3 +7,11 @@ services:
             - ./master/initdb.d:/docker-entrypoint-initdb.d
         env_file:
             - ./master/master.env
+    slave-db:
+        image: mysql:5.6
+        volumes:
+            - ./slave/data:/var/lib/mysql
+            - ./slave/conf.d:/etc/mysql/conf.d
+            - ./slave/init.sh:/usr/local/bin/init.sh
+        env_file:
+            - ./slave/slave.env
